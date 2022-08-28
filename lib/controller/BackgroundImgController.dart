@@ -26,7 +26,7 @@ class BackgroundImgController extends GetxController {
   }
 
   void apiLogin() async {
-
+    print("heyyy===========================apiLogin");
     print("read switch=="+box.read('switch', ).toString());
    isLoading(true);
     Future.delayed(

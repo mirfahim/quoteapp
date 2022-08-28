@@ -2,6 +2,7 @@ import 'dart:io';
 
 //import 'package:admob_flutter/admob_flutter.dart';
 //import 'package:firebase_admob/firebase_admob.dart';
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +24,7 @@ const int FinalAdCounter=3;
 /*-------------------Ads Status Change-------------------------------------*/
 // here , if you want  GoogleAds show in Food Delivery UI Application, you can easily change "isAdShow" flag value true.
 
-bool isAdShow=false;
+bool isAdShow=true;
 
 
 
@@ -33,7 +34,7 @@ String getAppId() {
     return AppString.googleAdsAppIDIOS;
   } else if (Platform.isAndroid) {
    // return AppString.googleAdsAppIDAndroid;
-   return  'ca-app-pub-3940256099942544~3347511713';
+   return  'ca-app-pub-2439453252928936~7050236967';
 
 
   }
@@ -48,7 +49,10 @@ String getBannerAdUnitId() {
     return AppString.bannerAdsIOS;
   } else if (Platform.isAndroid) {
    // return AppString.bannerAdsAndroid;
-      return 'ca-app-pub-3940256099942544/2934735716';
+    //
+    //  return 'ca-app-pub-2439453252928936/7597031879';
+
+    return  'ca-app-pub-2439453252928936/7597031879' ;
 
   }
   return null;
@@ -69,27 +73,28 @@ String getNativeAdUnitId() {
 
 bool isAdLoad = false;
 
-// void handleEvent(AdmobAdEvent event, Map<String, dynamic> args, String adType) {
-//   switch (event) {
-//     case AdmobAdEvent.loaded:
-//       isAdLoad = true;
-//       print('New Admob $adType Ad loaded!');
-//       break;
-//     case AdmobAdEvent.opened:
-//       isAdLoad = true;
-//       print('Admob $adType Ad opened!');
-//       break;
-//     case AdmobAdEvent.closed:
-//       isAdLoad = false;
-//       print('Admob $adType Ad closed!');
-//       break;
-//     case AdmobAdEvent.failedToLoad:
-//       isAdLoad = false;
-//       //print('Admob $adType failed to load. :(');
-//       break;
-//     default:
-//   }
-// }
+void handleEvent(AdmobAdEvent event, Map<String, dynamic> args, String adType) {
+  switch (event) {
+    case AdmobAdEvent.loaded:
+      isAdLoad = true;
+      print('New Admob $adType Ad loaded!');
+      break;
+    case AdmobAdEvent.opened:
+      isAdLoad = true;
+      print('Admob $adType Ad opened!');
+      break;
+    case AdmobAdEvent.closed:
+      isAdLoad = false;
+      print('Admob $adType Ad closed!');
+      break;
+    case AdmobAdEvent.failedToLoad:
+      isAdLoad = false;
+      //print('Admob $adType failed to load. :(');
+      print('Admob $adType Ad failed to load!');
+      break;
+    default:
+  }
+ }
 
 
 

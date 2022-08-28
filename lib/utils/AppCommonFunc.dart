@@ -1,6 +1,6 @@
 import 'dart:io';
 
-//import 'package:admob_flutter/admob_flutter.dart';
+import 'package:admob_flutter/admob_flutter.dart';
 //import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +22,8 @@ import 'AppString.dart';
 
 class AppCommonFunc {
 
- // static AdmobInterstitial interstitialAd1;
- // static InterstitialAd interstitialAd;
+// static AdmobInterstitial interstitialAd1;
+ //static InterstitialAd interstitialAd;
   static PreferenceHelper preferenceHelper;
   static SharedPreferences prefs;
   static NativeAdmobController _nativeAdController = NativeAdmobController();
@@ -34,15 +34,19 @@ class AppCommonFunc {
   static Widget admobBannerAd(BuildContext context){
     return isAdShow ?
     Container(
-      // child: AdmobBanner(
-      //   adUnitId: getBannerAdUnitId(),
-      //   adSize: AdmobBannerSize.FULL_BANNER,
-      //   listener: (AdmobAdEvent event, Map<String, dynamic> args) {
-      //     handleEvent(event, args, 'Banner');
-      //   },
-      // ),
+      child: AdmobBanner(
+        adUnitId: getBannerAdUnitId(),
+        adSize: AdmobBannerSize.FULL_BANNER,
+        listener: (AdmobAdEvent event, Map<String, dynamic> args) {
+         if (event == AdmobAdEvent.closed)
+          // interstitialAd1..load();
+         handleEvent(event, args, 'Banner');
+        },
+      ),
     )
-    :  Container();
+    :  Container(
+      child: Text("No Text"),
+    );
   }
 
 
@@ -66,6 +70,7 @@ class AppCommonFunc {
   //        }
   //       else{
   //          handleEvent(event, args, 'Interstitial');
+  //         // handleEvent(event, args, 'Interstitial');
   //        }
   //      },
   //    );
@@ -108,7 +113,6 @@ class AppCommonFunc {
   //     }
   //   });
   // }
-
 
 
 

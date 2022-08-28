@@ -80,6 +80,7 @@ class _PopularScreenUIState extends State<PopularScreenUI> {
                                   ),
                           ),
                   )),
+
               AppCommonFunc.admobBannerAd(context),
             ],
           ),
