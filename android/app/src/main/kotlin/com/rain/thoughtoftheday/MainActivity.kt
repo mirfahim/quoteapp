@@ -1,4 +1,4 @@
-package com.rain.thoughtoftheday
+package com.fahim.attoprokash
 
 import io.flutter.embedding.android.FlutterActivity
 
